@@ -13,7 +13,11 @@ public class MainService extends BaseService {
     }
 
     public void run() {
-        System.out.println("---Welcome to the TicketSales---");
+        System.out.println();
+        System.out.println("---Welcome to the TicketSales Program---");
+        System.out.println();
+        System.out.println("      ---UEFA Champions League---");
+        System.out.println("           ---Group stage---");
         UserService userService = new UserService(db, intScanner, strScanner);
         while (true) {
             try {

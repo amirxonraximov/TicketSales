@@ -7,6 +7,7 @@ import models.User;
 import service.BaseService;
 import service.match.MatchService;
 import service.stadium.StadiumService;
+import service.team.TeamService;
 
 import java.util.List;
 import java.util.Scanner;
@@ -22,26 +23,31 @@ public class AdminService extends BaseService {
         while (true) {
             StadiumService stadiumService = new StadiumService(db, intScanner, strScanner);
             MatchService matchService = new MatchService(db, intScanner, strScanner);
+            TeamService teamService = new TeamService(db, intScanner, strScanner);
             try {
-                System.out.println("1. Show upcoming matches");
-                System.out.println("2. Show finished matches");
-                System.out.println("3. Show stadiums");
-                System.out.println("4. Show teams");
+                System.out.println("1. Add new match");
+                System.out.println("2. Show upcoming matches");
+                System.out.println("3. Show finished matches");
+                System.out.println("4. Show standing");
+                System.out.println("5. Show stadiums");
                 System.out.println("0. Back");
                 int cmd = strScanner.nextInt();
 
                 switch (cmd) {
                     case 1 -> {
-                        matchService.showUpcomingMatches();
+
                     }
                     case 2 -> {
-
+                        matchService.showUpcomingMatches();
                     }
                     case 3 -> {
-                        stadiumService.showStadiums();
+                        matchService.showFinishedMatches();
                     }
                     case 4 -> {
-
+                        teamService.showStanding();
+                    }
+                    case 5 -> {
+                        stadiumService.showStadiums();
                     }
                     case 0 -> {
                         return;

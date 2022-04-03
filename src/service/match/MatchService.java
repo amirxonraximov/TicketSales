@@ -17,8 +17,36 @@ public class MatchService extends BaseService {
 
     public void showUpcomingMatches() {
         MatchDao matchDao = db.getMatchDao();
-        List<Match> matches = matchDao.getAll();
-        System.out.println("---Stadiums---");
+        List<Match> matches = matchDao.getUpcomingMatches();
+        System.out.println("---Upcoming Matches---");
+        if (matches.isEmpty()) {
+            System.out.println("Matches not found!!!");
+        } else {
+            for (int i = 1; i <= matches.size(); i++) {
+                Match match = matches.get(i - 1);
+                System.out.printf("%d. %s - %s\n", i, match.getFirstTeam().getName(), match.getSecondTeam().getName());
+                System.out.printf("   Stadium: %s\n", match.getStadium().getName());
+                System.out.printf("   Time: %s\n", match.getDate());
+                System.out.println();
+            }
+        }
+        while (true) {
+            try {
+                System.out.println("0. Back");
+                int cmd = intScanner.nextInt();
+                if (cmd == 0) return;
+                System.out.println("Invalid option!!!");
+            } catch (Exception e) {
+                System.out.println("Invalid option!!!");
+                intScanner.next();
+            }
+        }
+    }
+
+    public void showFinishedMatches() {
+        MatchDao matchDao = db.getMatchDao();
+        List<Match> matches = matchDao.getFinishedMatches();
+        System.out.println("---Upcoming Matches---");
         if (matches.isEmpty()) {
             System.out.println("Matches not found!!!");
         } else {

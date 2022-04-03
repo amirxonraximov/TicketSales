@@ -3,6 +3,7 @@ package models;
 public class Team {
     String id;
     String name;
+    int point = 0;
 
     public Team(String id, String name, int point) {
         this.id = id;
@@ -34,5 +35,4 @@ public class Team {
         this.point = point;
     }
 
-    int point = 0;
 }

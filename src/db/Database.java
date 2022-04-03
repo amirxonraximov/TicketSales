@@ -16,7 +16,7 @@ public class Database {
     private Database() {
     }
 
-    List<Stadium> stadiums = new ArrayList<>() {
+    protected List<Stadium> stadiums = new ArrayList<>() {
         {
             add(new Stadium(
                     "camp_nou",
@@ -41,20 +41,20 @@ public class Database {
         }
     };
 
-    List<Team> teams = new ArrayList<>() {{
+    protected List<Team> teams = new ArrayList<>() {{
         add(new Team("barcelona", "Barcelona", 0));
         add(new Team("chelsea", "Chelsea", 0));
         add(new Team("bayern", "Bayern", 0));
         add(new Team("milan", "Milan", 0));
     }};
 
-    List<User> users = new ArrayList<>() {{
-        add(new User("admin", "Admin", "admin@gmail.com", UserRole.ADMIN));
-        add(new User("costumer_1", "Costumer 1", "costumer@gmail.com", UserRole.CUSTOMER));
+    protected List<User> users = new ArrayList<>() {{
+        add(new User("admin_1", "Admin 1", "admin1@gmail.com", UserRole.ADMIN));
+        add(new User("costumer_1", "Costumer 1", "costumer1@gmail.com", UserRole.CUSTOMER));
         add(new User("costumer_2", "Costumer 2", "costumer2@gmail.com", UserRole.CUSTOMER));
     }};
 
-    List<Match> matches = new ArrayList<>();
+    protected List<Match> matches = new ArrayList<>();
 
     public StadiumDao getStadiumDao() {
         return new StadiumDao(instance);
@@ -67,6 +67,8 @@ public class Database {
     public MatchDao getMatchDao() {
         return new MatchDao(instance);
     }
+
+    public TeamDao getTeamDao() { return new TeamDao(instance); }
 
     public static Database getInstance() {
         return instance;
