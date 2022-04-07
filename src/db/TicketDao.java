@@ -19,8 +19,8 @@ public class TicketDao {
         this.db = db;
     }
 
-    public List<Team> getAll() {
-        return db.teams;
+    public List<Ticket> getAll() {
+        return db.tickets;
     }
 
     public void addTicket(Ticket ticket) {

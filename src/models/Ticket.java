@@ -95,8 +95,8 @@ public class Ticket {
     public String toString() {
         return String.format("%s - %s\n", this.getMatch().getFirstTeam().getName(), this.getMatch().getSecondTeam().getName()) +
                 String.format("   Stadium: %s\n", this.getMatch().getStadium().getName()) +
-                String.format("   Sector: %s\n", this.getSector()) +
-                String.format("   Seat: %s\n", this.getSeat()) +
+                String.format("   Sector: %s\n", this.getSector().getName()) +
+                String.format("   Seat: %s\n", this.getSeat().getNumber()) +
                 String.format("   Time: %s\n", this.getMatch().getDate());
     }
 

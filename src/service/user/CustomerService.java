@@ -7,6 +7,7 @@ import service.BaseService;
 import service.match.MatchService;
 import service.stadium.StadiumService;
 import service.team.TeamService;
+import service.ticket.TicketServices;
 
 import java.util.Scanner;
 
@@ -22,11 +23,12 @@ public class CustomerService extends BaseService {
             StadiumService stadiumService = new StadiumService(db, intScanner, strScanner);
             MatchService matchService = new MatchService(db, intScanner, strScanner);
             TeamService teamService = new TeamService(db, intScanner, strScanner);
+            TicketServices ticketServices = new TicketServices(db, intScanner,strScanner);
             try {
                 System.out.println("1. Show upcoming matches");
                 System.out.println("2. Show finished matches");
                 System.out.println("3. Show standing");
-                System.out.println("3. Show Purchased tickets");
+                System.out.println("4. Show Purchased tickets");
                 System.out.println("0. Back");
                 int cmd = strScanner.nextInt();
 
@@ -41,7 +43,7 @@ public class CustomerService extends BaseService {
                         teamService.showStanding();
                     }
                     case 4 -> {
-
+                        ticketServices.showPurchasedTickets();
                     }
 
                     case 0 -> {

@@ -115,7 +115,8 @@ public class Match {
     public String toString() {
         return String.format("%s - %s\n", this.getFirstTeam().getName(), this.getSecondTeam().getName()) +
                 String.format("   Stadium: %s\n", this.getStadium().getName()) +
-                String.format("   Time: %s\n", this.getDate());
+                String.format("   Time: %s\n", this.getDate()) +
+                String.format("   Match level: %s\n", this.getLevel().toString());
     }
 
     public String stringWithScores() {

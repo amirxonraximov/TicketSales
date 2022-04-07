@@ -40,9 +40,8 @@ public class MatchService extends BaseService {
                     System.out.print("Select match to enter result: \n");
                     for (int i = 1; i <= matches.size(); i++) {
                         Match match = matches.get(i - 1);
-                        System.out.printf("%d. %s - %s\n", i, match.getFirstTeam().getName(), match.getSecondTeam().getName());
-                        System.out.printf("   Stadium: %s\n", match.getStadium().getName());
-                        System.out.printf("   Time: %s\n", match.getDate());
+                        System.out.print(i + " ");
+                        System.out.println(match.toString());
                     }
                     System.out.println("0. Back");
                     int matchNumber = intScanner.nextInt();
@@ -83,9 +82,8 @@ public class MatchService extends BaseService {
                     System.out.print("Select match to buy a ticket: \n");
                     for (int i = 1; i <= matches.size(); i++) {
                         Match match = matches.get(i - 1);
-                        System.out.printf("%d. %s - %s\n", i, match.getFirstTeam().getName(), match.getSecondTeam().getName());
-                        System.out.printf("   Stadium: %s\n", match.getStadium().getName());
-                        System.out.printf("   Time: %s\n", match.getDate());
+                        System.out.print(i + " ");
+                        System.out.println(match.toString());
                     }
                     System.out.println("0. Back");
                     int matchNumber = intScanner.nextInt();
@@ -276,7 +274,7 @@ public class MatchService extends BaseService {
             try {
                 System.out.println("Select sector: ");
                 for (int i = 0; i < sectors.size(); i++) {
-                    System.out.println(i + 1 + " " + sectors.get(i).getName());
+                    System.out.println(i + 1 + " " + sectors.get(i).getName() + " (" + sectors.get(i).getLevel() + ")");
                 }
                 System.out.println("0. Cancel");
                 int cmd = intScanner.nextInt();
