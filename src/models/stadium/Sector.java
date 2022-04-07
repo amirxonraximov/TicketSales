@@ -3,6 +3,7 @@ package models.stadium;
 import models.enums.SectorLevel;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Sector {
     String id;
@@ -47,5 +48,13 @@ public class Sector {
 
     public void setSeats(List<Seat> seats) {
         this.seats = seats;
+    }
+
+    public void updateSeat(Seat seat) {
+        for (int i = 0; i < seats.size(); i++) {
+            if (Objects.equals(seats.get(i).getId(), seat.getId())) {
+                seats.set(i, seat);
+            }
+        }
     }
 }

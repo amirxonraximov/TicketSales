@@ -6,16 +6,16 @@ import models.stadium.Stadium;
 
 public class Ticket {
     String id;
+    String userId;
     Match match;
-    Stadium stadium;
     Sector sector;
     Seat seat;
     double price = 0;
 
-    public Ticket(String id, Match match, Stadium stadium, Sector sector, Seat seat, double price) {
+    public Ticket(String id, String userId, Match match, Sector sector, Seat seat, double price) {
         this.id = id;
+        this.userId = userId;
         this.match = match;
-        this.stadium = stadium;
         this.sector = sector;
         this.seat = seat;
         this.price = price;
@@ -35,14 +35,6 @@ public class Ticket {
 
     public void setMatch(Match match) {
         this.match = match;
-    }
-
-    public Stadium getStadium() {
-        return stadium;
-    }
-
-    public void setStadium(Stadium stadium) {
-        this.stadium = stadium;
     }
 
     public Sector getSector() {
@@ -69,10 +61,9 @@ public class Ticket {
         this.price = price;
     }
 
-    public Ticket(String id, Match match, Stadium stadium, Sector sector, Seat seat) {
-        this.id = id;
+    public Ticket(Match match, Sector sector, Seat seat) {
+        this.id = match.getId() + sector.getId() + seat.getId();
         this.match = match;
-        this.stadium = stadium;
         this.sector = sector;
         this.seat = seat;
 
@@ -99,4 +90,14 @@ public class Ticket {
             }
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s - %s\n", this.getMatch().getFirstTeam().getName(), this.getMatch().getSecondTeam().getName()) +
+                String.format("   Stadium: %s\n", this.getMatch().getStadium().getName()) +
+                String.format("   Sector: %s\n", this.getSector()) +
+                String.format("   Seat: %s\n", this.getSeat()) +
+                String.format("   Time: %s\n", this.getMatch().getDate());
+    }
+
 }

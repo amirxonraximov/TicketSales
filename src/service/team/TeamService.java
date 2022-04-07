@@ -1,4 +1,5 @@
 package service.team;
+
 import db.Database;
 import db.TeamDao;
 import models.Team;
@@ -14,9 +15,9 @@ public class TeamService extends BaseService {
         super(db, intScanner, strScanner);
     }
 
-    public  void showStanding() {
+    public void showStanding() {
         TeamDao teamDao = db.getTeamDao();
-        List<Team> teams = teamDao.getAll();
+        List<Team> teams = teamDao.getStandings();
         System.out.println("---Standing---");
         for (int i = 1; i <= teams.size(); i++) {
             System.out.printf("%d. %s - %d\n", i, teams.get(i - 1).getName(), teams.get(i - 1).getPoint());

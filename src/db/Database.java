@@ -2,6 +2,7 @@ package db;
 
 import models.Match;
 import models.Team;
+import models.Ticket;
 import models.User;
 import models.enums.UserRole;
 import models.stadium.Stadium;
@@ -54,7 +55,11 @@ public class Database {
         add(new User("costumer_2", "Costumer 2", "costumer2@gmail.com", UserRole.CUSTOMER));
     }};
 
-    protected List<Match> matches = new ArrayList<>();
+    protected List<Ticket> tickets = new ArrayList<>();
+
+    protected List<Match> matches = new ArrayList<>(){{
+//        add(new Match())
+    }};
 
     public StadiumDao getStadiumDao() {
         return new StadiumDao(instance);
@@ -68,7 +73,13 @@ public class Database {
         return new MatchDao(instance);
     }
 
-    public TeamDao getTeamDao() { return new TeamDao(instance); }
+    public TicketDao getTicketDao() {
+        return new TicketDao(instance);
+    }
+
+    public TeamDao getTeamDao() {
+        return new TeamDao(instance);
+    }
 
     public static Database getInstance() {
         return instance;

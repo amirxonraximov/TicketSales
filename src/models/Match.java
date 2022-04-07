@@ -2,7 +2,9 @@ package models;
 
 import models.enums.MatchLevel;
 import models.enums.MatchState;
+import models.stadium.Sector;
 import models.stadium.Stadium;
+
 
 public class Match {
     String id;
@@ -11,6 +13,9 @@ public class Match {
     Stadium stadium;
     String date;
     MatchLevel level;
+    MatchState state = MatchState.UPCOMING;
+    int firstTeamScore = -1;
+    int secondTeamScore = -1;
 
     public Match(String id, Team firstTeam, Team secondTeam, Stadium stadium, String date, MatchLevel level,
                  MatchState state, int firstTeamScore, int secondTeamScore) {
@@ -23,6 +28,15 @@ public class Match {
         this.state = state;
         this.firstTeamScore = firstTeamScore;
         this.secondTeamScore = secondTeamScore;
+    }
+
+    public Match(Team firstTeam, Team secondTeam, Stadium stadium, String date, MatchLevel level) {
+        this.id = firstTeam.name + secondTeam.name + date;
+        this.firstTeam = firstTeam;
+        this.secondTeam = secondTeam;
+        this.stadium = stadium;
+        this.date = date;
+        this.level = level;
     }
 
     public String getId() {
@@ -97,7 +111,16 @@ public class Match {
         this.secondTeamScore = secondTeamScore;
     }
 
-    MatchState state = MatchState.UPCOMING;
-    int firstTeamScore = -1;
-    int secondTeamScore = -1;
+    @Override
+    public String toString() {
+        return String.format("%s - %s\n", this.getFirstTeam().getName(), this.getSecondTeam().getName()) +
+                String.format("   Stadium: %s\n", this.getStadium().getName()) +
+                String.format("   Time: %s\n", this.getDate());
+    }
+
+    public String stringWithScores() {
+        return String.format("%s %d - %d %s\n", this.getFirstTeam().getName(), this.getFirstTeamScore(), this.getSecondTeamScore(), this.getSecondTeam().getName()) +
+                String.format("   Stadium: %s\n", this.getStadium().getName()) +
+                String.format("   Time: %s\n", this.getDate());
+    }
 }

@@ -3,13 +3,11 @@ package service.user;
 import db.Database;
 import db.UserDao;
 import db.Util;
-import models.User;
 import service.BaseService;
 import service.match.MatchService;
 import service.stadium.StadiumService;
 import service.team.TeamService;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class AdminService extends BaseService {
@@ -35,10 +33,10 @@ public class AdminService extends BaseService {
 
                 switch (cmd) {
                     case 1 -> {
-
+                        matchService.createMatch();
                     }
                     case 2 -> {
-                        matchService.showUpcomingMatches();
+                        matchService.showAdminUpcomingMatches();
                     }
                     case 3 -> {
                         matchService.showFinishedMatches();

@@ -35,4 +35,9 @@ public class Team {
         this.point = point;
     }
 
+    @Override
+    public String toString() {
+        return "Name: " + name + "\n" +
+                "  Point: " + point;
+    }
 }

@@ -4,6 +4,7 @@ import models.enums.SectorLevel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Stadium {
     String id;
@@ -81,5 +82,19 @@ public class Stadium {
                 add(new Seat("seat_5", 5));
             }}));
         }};
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + '\n' +
+                "  Address: " + address;
+    }
+
+    public void updateSector(Sector sector) {
+        for (int i = 0; i < sectors.size(); i++) {
+            if (Objects.equals(sectors.get(i).getId(), sector.getId())) {
+                sectors.set(i, sector);
+            }
+        }
     }
 }

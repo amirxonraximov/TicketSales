@@ -63,7 +63,7 @@ public class UserService extends BaseService {
                 if (cmd == 0) {
                     return;
                 } else if (cmd <= customers.size() && cmd > 0) {
-                    //TODO
+                    customerService.showMenu();
                 } else if (cmd == customers.size() + 1) {
                     customerService.addCustomer();
                 } else {
